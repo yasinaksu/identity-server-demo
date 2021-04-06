@@ -40,7 +40,7 @@ namespace IdentityServer.AuthServer
                     ClientName = "Client 1 app uygulaması",
                     ClientSecrets = new[] { new Secret("secret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new[] { "api1.read", "api2.write", "api2.update" }
+                    AllowedScopes = new[] { "api1.read" }
                 },
                 new Client {
                     ClientId = "Client2",

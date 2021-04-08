@@ -32,6 +32,21 @@ namespace IdentityServer.WebApi1
                     jwtBearerOptions.Authority = "https://localhost:5001";
                     jwtBearerOptions.Audience = "resource_api1";
                 });
+
+            services.AddAuthorization(authorizationOptions =>
+            {
+                authorizationOptions.AddPolicy("ReadProduct", policy =>
+                {
+                    policy.RequireClaim("scope", "api1.read");
+                });
+
+                authorizationOptions.AddPolicy("UpdateOrCreate", policy =>
+                {
+                    policy.RequireClaim("scope", "api1.update", "api1.write");
+                });
+
+            });
+
             services.AddControllers();
         }
 

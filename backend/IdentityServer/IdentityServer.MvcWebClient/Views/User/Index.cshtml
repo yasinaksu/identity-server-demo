@@ -1,7 +1,47 @@
-﻿
+﻿@using Microsoft.AspNetCore.Authentication
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>shown by member </h1>
+
+<h3>Claim datas</h3>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Claim Type</th>
+            <th>Claim Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in User.Claims)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Auth datas</h3>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Auth Property Key</th>
+            <th>Auth Property Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
 

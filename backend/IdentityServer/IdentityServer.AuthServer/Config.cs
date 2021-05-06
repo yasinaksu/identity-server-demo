@@ -60,11 +60,12 @@ namespace IdentityServer.AuthServer
                 },
                 new Client
                 {
+                    RequirePkce = false,
                     ClientId = "Clint1-Mvc",
                     ClientName = "Client 1 app mvc uygulaması",
                     ClientSecrets = new[] { new Secret("secret".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Hybrid,
-                    RedirectUris = new List<string> { "https://localhost:5003/sign-oidc" },
+                    RedirectUris = new List<string> { "https://localhost:44382/signin-oidc" },
                     AllowedScopes = new List<string> { IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile }
                 }
             };

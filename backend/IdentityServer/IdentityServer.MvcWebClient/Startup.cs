@@ -32,7 +32,7 @@ namespace IdentityServer.MvcWebClient
               .AddOpenIdConnect("oidc", configureOptions =>
               {
                   configureOptions.SignInScheme = "Cookies";
-                  configureOptions.Authority = "https://localhost:5001";
+                  configureOptions.Authority = "https://localhost:44344";
                   configureOptions.ClientId = "Clint1-Mvc";
                   configureOptions.ClientSecret = "secret";
                   configureOptions.ResponseType = "code id_token";
@@ -57,6 +57,8 @@ namespace IdentityServer.MvcWebClient
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

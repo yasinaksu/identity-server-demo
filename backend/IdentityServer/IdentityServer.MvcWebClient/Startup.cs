@@ -23,6 +23,20 @@ namespace IdentityServer.MvcWebClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(configureOptions =>
+            {
+                configureOptions.DefaultScheme = "Cookies";
+                configureOptions.DefaultChallengeScheme = "oidc";
+
+            }).AddCookie("Cookies")
+              .AddOpenIdConnect("oidc", configureOptions =>
+              {
+                  configureOptions.SignInScheme = "Cookies";
+                  configureOptions.Authority = "https://localhost:5001";
+                  configureOptions.ClientId = "Clint1-Mvc";
+                  configureOptions.ClientSecret = "secret";
+                  configureOptions.ResponseType = "code id_token";
+              });
             services.AddControllersWithViews();
         }
 
